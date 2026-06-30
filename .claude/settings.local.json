@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(conda env *)",
+      "Bash(/opt/anaconda3/envs/pytorch/bin/python -c \"import torch; print\\('PyTorch版本:', torch.__version__\\); print\\('CUDA可用:', torch.cuda.is_available\\(\\)\\); print\\('MPS可用:', torch.backends.mps.is_available\\(\\)\\)\")"
+    ]
+  }
+}
