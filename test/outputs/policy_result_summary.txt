@@ -1,0 +1,31 @@
+MobileNetV3 Image-to-Action Policy Demo
+Seed: 20260701
+Model: torchvision.models.mobilenet_v3_small + action head
+Pretrained backbone: True
+Image source: outputs/sample_dog.jpg
+Fixed shapes:
+  image  : [1, 3, 224, 224]
+  action : [1, 4]
+
+Note:
+  This uses a real lightweight CNN architecture, but no trained robot policy weights.
+  ImageNet pretrained backbone improves visual features, but does not train the action head.
+  The action values are useful for deployment validation, not robot control.
+
+Action outputs:
+  PyTorch action: [0.173656, -0.019071, -0.048133, 0.021527]
+  FP32 ONNX action: [0.173656, -0.019071, -0.048133, 0.021528]
+  INT8 ONNX action: [0.173517, -0.017391, -0.047164, 0.020828]
+
+Torch vs ONNX Policy
+  max_abs_error : 0.00000035
+  mean_abs_error: 0.00000020
+
+FP32 ONNX vs INT8 ONNX Policy
+  max_abs_error : 0.00167984
+  mean_abs_error: 0.00087166
+
+Generated files:
+  mobilenet_action_policy.onnx
+  mobilenet_action_policy_int8.onnx
+  policy_result_summary.txt

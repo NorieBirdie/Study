@@ -1,0 +1,30 @@
+LeWorldModel QNN Quantization Validation Demo
+Seed: 20260701
+Fixed shapes:
+  image       : [1, 3, 224, 224]
+  latent      : [1, 256]
+  action      : [1, 4]
+  next_latent : [1, 256]
+
+Torch vs ONNX Encoder
+  max_abs_error : 0.00000003
+  mean_abs_error: 0.00000000
+
+Torch vs ONNX Predictor
+  max_abs_error : 0.00000003
+  mean_abs_error: 0.00000001
+
+FP32 ONNX vs INT8 ONNX Encoder
+  max_abs_error : 0.00057796
+  mean_abs_error: 0.00016192
+
+FP32 ONNX vs INT8 ONNX Predictor
+  max_abs_error : 0.00127679
+  mean_abs_error: 0.00036961
+
+Generated files:
+  tiny_encoder.onnx
+  tiny_predictor.onnx
+  tiny_encoder_int8.onnx
+  tiny_predictor_int8.onnx
+  result_summary.txt

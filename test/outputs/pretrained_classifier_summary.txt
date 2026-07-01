@@ -1,0 +1,46 @@
+Pretrained MobileNetV3-Small ImageNet Classifier Demo
+Seed: 20260701
+Image source: outputs/sample_dog.jpg
+Model: torchvision.models.mobilenet_v3_small
+Weights: MobileNet_V3_Small_Weights.IMAGENET1K_V1
+Fixed shapes:
+  image  : [1, 3, 224, 224]
+  logits : [1, 1000]
+
+Important note:
+  These are real ImageNet classification results.
+  They are not robot actions. Correct actions require a policy trained on action data.
+
+PyTorch top predictions:
+  1. Samoyed: 0.7579
+  2. Arctic fox: 0.0654
+  3. Pomeranian: 0.0652
+  4. wallaby: 0.0198
+  5. Great Pyrenees: 0.0162
+
+FP32 ONNX top predictions:
+  1. Samoyed: 0.7579
+  2. Arctic fox: 0.0654
+  3. Pomeranian: 0.0652
+  4. wallaby: 0.0198
+  5. Great Pyrenees: 0.0162
+
+INT8 ONNX top predictions:
+  1. Samoyed: 0.7430
+  2. Pomeranian: 0.0694
+  3. Arctic fox: 0.0628
+  4. Great Pyrenees: 0.0205
+  5. wallaby: 0.0200
+
+Torch logits vs ONNX logits
+  max_abs_error : 0.00002393
+  mean_abs_error: 0.00000533
+
+FP32 ONNX logits vs INT8 ONNX logits
+  max_abs_error : 0.29346848
+  mean_abs_error: 0.07663012
+
+Generated files:
+  mobilenet_v3_small_imagenet.onnx
+  mobilenet_v3_small_imagenet_int8.onnx
+  pretrained_classifier_summary.txt
