@@ -34,7 +34,12 @@ def run_onnx(model_path: Path, feeds: dict[str, np.ndarray]) -> np.ndarray:
     # session.run(None, feeds) 表示计算所有输出。
     # feeds 的 key 必须和导出 ONNX 时设置的 input_names 一致。
     outputs = session.run(None, feeds)
-    return outputs[0]
+    first_output = outputs[0]
+    if not isinstance(first_output, np.ndarray):
+        raise TypeError(
+            f"Expected ONNX output to be np.ndarray, got {type(first_output)!r}"
+        )
+    return first_output
 
 
 def compare_encoder_torch_onnx(
